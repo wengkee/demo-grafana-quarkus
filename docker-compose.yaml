@@ -1,0 +1,28 @@
+# version: '3'
+services:
+
+  my-prometheus:
+    image: prom/prometheus
+    container_name: my-prometheus
+    volumes:
+      - ~/workspace/grafana-prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    networks:
+      grafana-prometheus:
+          aliases:
+              - prometheus
+    ports:
+      - 9090:9090
+
+  my-grafana:
+    image: grafana/grafana-oss:latest
+    container_name: my-grafana
+    networks:
+      grafana-prometheus:
+          aliases:
+              - grafana
+    ports:
+      - 3000:3000
+
+
+networks:
+  grafana-prometheus:
