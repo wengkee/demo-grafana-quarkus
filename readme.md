@@ -2,9 +2,7 @@
 
 1. Start Quarkus sample app
 
-        git clone git@github.com:quarkusio/quarkus-quickstarts.git
-
-        cd quarkus-quickstarts/micrometer-quickstart
+        cd micrometer-quickstart
 
         mvn clean compile quarkus:dev
 
@@ -19,3 +17,13 @@
 1. Click on + sign at top right corner, then click on import dashboard
 
 1. Enter the Dashboard ID or the JSON. E.g. [14370](https://grafana.com/grafana/dashboards/14370-jvm-quarkus-micrometer-metrics/)
+
+  ![Grafana Dashboard](screenshot.png)
+
+
+## Test
+Send a http req every 1 second and print the execution time
+
+    while true; do time curl localhost:8080/example/random; sleep 1; echo; done
+
+>:warning: You might need to change TIMEFMT on your machine to display time in smaller granularity
