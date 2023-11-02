@@ -5,7 +5,7 @@ services:
     image: prom/prometheus
     container_name: my-prometheus
     volumes:
-      - ~/workspace/grafana-prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
     networks:
       grafana-prometheus:
           aliases:

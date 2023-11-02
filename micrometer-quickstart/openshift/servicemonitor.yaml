@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: micrometer-wengkee
+  name: micrometer-wengkee
+  namespace: test-wengkee
+spec:
+  endpoints:
+  - interval: 10s
+    path: /q/metrics
+    port: http
+    scheme: http
+  selector:
+    matchLabels:
+      enable-monitoring: "true"

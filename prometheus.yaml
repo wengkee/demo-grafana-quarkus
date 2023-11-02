@@ -1,7 +1,6 @@
 global:
   scrape_interval: 30s
 
-
 scrape_configs:
   # Prometheus itself
   # This uses the static method to get metrics endpoints
@@ -9,6 +8,8 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ["prometheus:9090"]
+
+  # Scraping from local quarkus app
   - job_name: 'quarkus-micrometer'
     metrics_path: '/q/metrics'
     scrape_interval: 3s
